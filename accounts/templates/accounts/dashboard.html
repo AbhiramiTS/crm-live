@@ -1,0 +1,152 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+
+<br>
+
+<div class="row">
+	<div class="col-md-5">
+		<h5>CUSTOMERS:</h5>
+		<hr>
+		<div class="card card-body">
+			<!-- <a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a> -->
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Customer</th>
+					<th>Phone</th>
+				</tr>
+
+				{% for customer in customers|slice:"9" %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">View</a></td>
+						<td>{{customer.name}}</td>
+						<td>{{customer.phone}}</td>
+					</tr>
+				{% endfor %}
+				
+			</table>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'all_customers' %}">View All Customers</a>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>LAST 10 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for order in order_items|slice:"10" %}
+					<tr>
+						<td>{{order.product}}</td>
+						<td>{{order.quantity}}</td>
+						<td>{{order.order_price}}</td>
+						<td>{{order.date_created}}</td>
+						<td>{{order.status}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
+
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+<br>
+<br>
+
+<div class="row">
+	<div class="col-md-4">
+		<h5>Previous Weeks</h5>
+		<hr>
+		<div class="card card-body">
+			<!-- <a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a> -->
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+				</tr>
+
+				{% for order in previous_week_orders|slice:"10" %}
+					<tr>
+						<td>{{order.product}}</td>
+						<td>{{order.date_created}}</td>
+						<td>{{order.status}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<h5>Last Week</h5>
+		<hr>
+		<div class="card card-body">
+			<!-- <a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a> -->
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+				</tr>
+
+				{% for order in last_week_orders|slice:"10" %}
+					<tr>
+						<td>{{order.product}}</td>
+						<td>{{order.date_created}}</td>
+						<td>{{order.status}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<h5>This Week</h5>
+		<hr>
+		<div class="card card-body">
+			<!-- <a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a> -->
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+				</tr>
+
+				{% for order in this_week_orders|slice:"10" %}
+					<tr>
+						<td>{{order.product}}</td>
+						<td>{{order.date_created}}</td>
+						<td>{{order.status}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+	
+</div>
+
+{% endblock %}

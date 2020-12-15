@@ -1,0 +1,46 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+{% include 'accounts/status.html' %}
+
+<div class="alert alert-success" role="alert">
+	Use Username: 'admin' and Password: 'admin' to log In to admin page.
+</div>
+<br>
+<br>
+<div class="row">
+
+	<div class="col-md">
+		<div class="card card-body">
+			<div style="text-align:right; margin-top: -4px; margin-right: 65px;">
+				<p class="btn btn-info"><a style="color: white; text-decoration: none;"
+						href="{% url 'create_order' customer_id %}">Place Order </a></p>
+			</div>
+
+			<table class="table table-sm">
+				<tr>
+					<th>Product</th>
+					<th>Date Orderd</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Status</th>
+					<th>Note</th>
+				</tr>
+
+				{% for order in orders %}
+
+				<tr>
+					<td>{{order.product}}</td>	
+					<td>{{order.date_created}}</td>
+					<td>{{order.quantity}}</td>
+					<td>{{order.order_price}}</td>
+					<td>{{order.status}}</td>
+					<td>{{order.note}}</td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,83 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<td><a class="btn btn-warning" href="{% url 'home' %}">Back</a></td>
+		<br>
+		<!-- <div style="text-align:right; margin-top: 19px; margin-right: 65px;">
+					<h5 class="btn btn-info" >{{orders}} : {{count}} </h5>
+					<h5 class="btn btn-info">Total Amount : {{price}} </h5>
+				</div> -->
+
+		<br>
+		<div id="accordion">
+			<div class="card">
+				<div class="card-header" id="headingTwo">
+					<h5 class="mb-0">
+						<h5>{{orders}} : {{count}}</h5>
+						<div style="text-align:right; margin-top: -37px; margin-right: 65px;">
+							<h5>Total Amount : {{price}}</h5>
+						</div>
+						<button class="btn btn-link collapsed btn btn-success "
+							style="color: white; text-decoration: none;" data-toggle="collapse"
+							data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Apply Filters
+						</button>
+					</h5>
+				</div>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+					<div class="card-body">
+
+						<div class="row">
+							<div class="col">
+								<div class="card card-body">
+									<form method="get">
+										{{myFilter.form}}
+										<button class="btn btn-primary" type="submit">Search</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+
+		<div class="card card-body">
+			<table class="table">
+				<tr>
+					<th>No</th>
+					<th>Customer</th>
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Price</th>
+					<th>Date Created</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+
+				{% for i in order %}
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					<td>{{i.customer.name}}</td>
+					<td>{{i.product.name}}</td>
+					<td>{{i.quantity}}</td>
+					<td>{{i.order_price}}</td>
+					<td>{{i.date_created}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_order' i.id %}">Update</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' i.id %}">Delete</a></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

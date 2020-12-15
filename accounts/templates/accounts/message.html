@@ -1,0 +1,6 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+<p>{{message}}</p>
+<a class="btn btn-warning" href="{% url 'home' %}">Back to Home Page</a>
+{% endblock %}

@@ -1,0 +1,62 @@
+<br>
+
+<div class="row">
+	{% if request.user.is_staff %}
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" style="background-color: #e03c36;">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Products Out of Stock</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h1 class="card-title">{{product_count}}</h1>
+				  </div>
+				  <h6><a href="{% url 'product_stock' %}">View Products</a></h6>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" style="background-color: #221fb6;">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Total Orders</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h1 class="card-title">{{total_orders}}</h1>
+				  </div>
+				  <h6><a href="{% url 'order_list' %}">View all Orders</a></h6>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" style="background-color: #23b848;">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders Delivered</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h1 class="card-title">{{delivered}}</h1>
+				  </div>
+				  <h6><a href="{% url 'order_delivered' %}">View delivered Orders</a></h6>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" style="background-color: #dcdf46;">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Orders Pending</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h1 class="card-title">{{pending}}</h1>
+				  </div>
+				  <h6><a href="{% url 'order_pending' %}">View pending Orders</a></h6>
+			</div>
+		</div>
+	</div>
+</div>

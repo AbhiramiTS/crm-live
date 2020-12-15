@@ -1,0 +1,113 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Customer: {{customer.name}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'update_customer' customer.id %}">Update Customer</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_order' customer.id %}">Place Order</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{customer.email}}</p>
+			<p>Phone: {{customer.phone}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Orders</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{order_count}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+		<div id="accordion">
+			<div class="card">
+				<div class="card-header" id="headingTwo">
+					<h5 class="mb-0">
+						<h5>Total Amount : {{ total_price }}</h5>
+						<div style="text-align:right; margin-top: -28px; margin-right: 65px;">
+							<h5> <a  class="btn btn-outline-danger" href="{% url 'delete_all_orders' customer.id %}"> Delete All the Orders</a> </h5>
+						</div>
+						<button class="btn btn-link collapsed btn btn-success "
+							style="color: white; text-decoration: none;" data-toggle="collapse"
+							data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							Apply Filters
+						</button>
+					</h5>
+				</div>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+					<div class="card-body">
+
+						<div class="row">
+							<div class="col">
+								<div class="card card-body">
+									<form method="get">
+										{{myFilter.form}}
+										<button class="btn btn-primary" type="submit">Search</button>
+									</form>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>No</th>
+					<th>Product</th>
+					<th>Quantity</th>
+					<th>Note</th>
+					<th>Category</th>
+					<th>Date Orderd</th>
+					<th>Status</th>
+					<th>Price</th>
+					<th>Update</th>
+					<th>Remove</th>
+				</tr>
+
+				{% for order in orders %}
+
+				<tr>
+					<td>{{ forloop.counter }}</td>
+					<td>{{order.product}}</td>
+					<td>{{order.quantity}}</td>
+					<td>{{order.note}}</td>
+					<td>{{order.product.category}}</td>
+					<td>{{order.date_created}}</td>
+					<td>{{order.status}}</td>
+					<td>{{order.order_price}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
+				</tr>
+				
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}
