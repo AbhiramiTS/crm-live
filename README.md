@@ -7,4 +7,4 @@
 * User Authentication and Password reset email option.
 
 
-![alt text](https://github.com/AbhiramiTS/amazon/blob/master/crm.png)
+![alt text](https://github.com/AbhiramiTS/amazon/blob/master/static/images/crm.png)
