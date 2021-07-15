@@ -76,21 +76,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'crm1.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'demo_2',
-#         'USER':'postgres',
-#         'PASSWORD':'postgres',
-#         'HOST':'database-2.cd2eecpcgkye.us-east-2.rds.amazonaws.com',
-#         'PORT':'5432'
-#     }
-# }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -139,25 +124,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
-#SMTP Configuration
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'abhiramits004@gmail.com'
-# EMAIL_HOST_PASSWORD = 'Abhishreya123*,.'
-
-
-# # S3 BUCKET CONFIG
-# AWS_ACCESS_KEY_ID = 'AKIA2A3MQW53JFKLBIFQ'
-# AWS_SECRET_ACCESS_KEY = '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'
-# AWS_STORAGE_BUCKET_NAME = 'abhi-crm1-bucket'
-
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 DATABASES = {
     'default': {
